@@ -35,3 +35,13 @@ body {
  .logo{
    font-family: 'Bungee', sans-serif;
  }
+
+ main{
+   display:flex;
+   padding: 0 10% 0 10%;
+   text-align: center;
+   flex-direction: column;
+   align-content: center;
+   align-items: center;
+   background-color: #f4f1ec;
+ }
