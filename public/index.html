@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="styles/header.css" type="text/css" />
     <link rel="stylesheet" href="styles/new-tweet.css" type="text/css" />
-
+    <link rel="stylesheet" href="styles/tweet.css" type="text/css" />
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -30,7 +30,7 @@
       <span><span class="bold">Write</span> a new tweet</span>
     </nav>
 
-    <header>
+    <header class="banner">
       <div>
         <img src="images/profile-hex.png" alt="Your Profile Picture" />
       </div>
@@ -52,7 +52,30 @@
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
+      </section>
+      <section id="all-tweets">
+        <article class="tweet">
+          <header>
+            <span>
+            <img src="images/meta-knight.jpg">
+            <p>Meta Knight</p>
+            </span>
+            <p class="handle">@ThatBlueGuy</p>
+          </header>
+          <p class="bold">No, I have no relation to that pink puff. Thanks for asking.</p>
+          <footer>
+            <p class="bold">5 hours ago</p>
+            <span>
+              <img src="images/flag.png">
+              <img src="images/repeat.png">
+              <img src="images/heart.png">
+            </span>
+          </footer>
+        </article>
       </section>   
     </main>
+    <div class="attribution">
+      <p>Icons made by <a href="https://smashicons.com/" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>  
+    </div>
   </body>
 </html>

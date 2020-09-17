@@ -29,7 +29,7 @@ body {
  }
 
  .bold{
-   font-weight: 700;
+   font-weight: 600;
  }
 
  .logo{
@@ -44,4 +44,9 @@ body {
    align-content: center;
    align-items: center;
    background-color: #f4f1ec;
+ }
+
+ .attribution{
+   font-size: x-small;
+   text-align: center;
  }
