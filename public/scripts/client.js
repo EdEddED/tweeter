@@ -22,37 +22,20 @@ $(document).ready(function() {
       type: "post",
       data: data
     });
-
-
-
   })
-  renderTweets(tempTweets);
-})
 
-const tempTweets = [
-  {
-    "user":{
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-    "content":{
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user":{
-      "name": "Meta Knight",
-      "avatars": "images/meta-knight.jpg",
-      "handle": "@ThatBlueGuy"
-    },
-    "content":{
-      "text": "No, I have no relation to that pink puff. Thanks for asking."
-    },
-    "created_at": 1461116232227
+  const loadTweets = function(){
+    
+    $('#all-tweets').empty();
+
+    $.ajax("/tweets", {method: "GET"})
+    .then(function(tweets){
+      renderTweets(tweets);
+    })
   }
-]
+
+  loadTweets();
+})
 
 const createTweetElement = function(tweet){
   //let tweet = $(`<article class = "tweet"> Hello World! </article>`);
@@ -80,9 +63,7 @@ const createTweetElement = function(tweet){
 }
 
 const renderTweets = function(tweets){
-  console.log("renderTweets called...");
-  
-  $('#all-tweets').empty();
+  // console.log("renderTweets called...");
   for (tweet of tweets){
     $('#all-tweets').append(createTweetElement(tweet));
   }
