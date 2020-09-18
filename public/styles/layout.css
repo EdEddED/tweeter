@@ -50,3 +50,9 @@ body {
    font-size: x-small;
    text-align: center;
  }
+
+ @media screen and (min-width: 1024px) {
+  main{
+    padding: 0;
+  }
+}
