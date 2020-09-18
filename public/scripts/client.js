@@ -6,46 +6,58 @@
 
 $(document).ready(function() {
 
-  $(".new-tweet").submit(function (event) {
-    console.log("new-tweet.submit called...");
+  $('.new-tweet').submit(function (event) { //what happens when the form is submitted
+
     event.preventDefault();
 
-    let data = $("form").serialize();
-    // console.log(data);
+    let data = $('form').serialize();
+    let message = $('#tweet-text').val();
+    let messageLength = message.length;
+    const limit = 140; //allows us to change the limit without major refactoring
 
-    // $.post("/tweets", data, function(){
-    //   console.log("Post Sucessful!");
-    // })
+    if (messageLength > limit){ //checks to ensure the text is below the specified limit
 
-    $.ajax({
-      url:"/tweets",
-      type: "post",
-      data: data
-    })
-    .then(setTimeout(loadTweets(), 500));
+      window.alert('Your message is too long. Shorten it and try again.');
+      return;
+
+    } else { //posts if at or under limit
+
+      $.ajax({
+        url:'/tweets',
+        type: 'post',
+        data: data
+      })
+      .then(setTimeout(loadTweets(), 1000));
+      
+      $('#tweet-text').val('')
+      $('#counter').text(140);
+
+    }
   })
 
-  const loadTweets = function(){
+  const loadTweets = function(){ //dynamically loads tweets into the #all-tweets container
     
     $('#all-tweets').empty();
 
-    $.ajax("/tweets", {method: "GET"})
+    $.ajax('/tweets', {method: 'GET'})
     .then(function(tweets){
       renderTweets(tweets);
     })
   }
 
   loadTweets();
+  
 })
 
-const escape = function(str){
+const escape = function(str){ //escapes unsafe text from the specified string
+
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
+
 }
 
-const createTweetElement = function(tweet){
-  //let tweet = $(`<article class = "tweet"> Hello World! </article>`);
+const createTweetElement = function(tweet){ //formats an individual tweet to the layout expected by the HTML and CSS
 
   let data = $(`
     <article class="tweet">
@@ -69,9 +81,10 @@ const createTweetElement = function(tweet){
   return data;
 }
 
-const renderTweets = function(tweets){
-  // console.log("renderTweets called...");
+const renderTweets = function(tweets){ //actually adds the tweets to the container, once formatted
+
   for (tweet of tweets){
     $('#all-tweets').prepend(createTweetElement(tweet));
   }
+
 }

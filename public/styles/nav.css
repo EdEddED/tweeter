@@ -9,6 +9,10 @@ nav{
   position: sticky;
   top: 0px;
 }
-.write{
-  font-family: 'Bungee', sans-serif;
+.write a{
+  color: #ffffff;
+  text-decoration: none;
+  padding: 3px;
+  border: 2px solid white;
+  border-radius: 4px;
 }

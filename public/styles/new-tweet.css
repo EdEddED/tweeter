@@ -34,6 +34,14 @@ textarea#tweet-text{
   margin: 5px 0 5px 0;
 }
 
-.counter{
+#counter{
   font-family: 'Bungee', sans-serif;
+}
+
+.underLimit{
+  color: #545149;
+}
+
+.overLimit{
+  color: #bb0000;
 }

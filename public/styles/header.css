@@ -11,6 +11,8 @@ header.banner{
   background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
 }
 
+ /* code for responsive layout */
+
 @media screen and (min-width: 1024px){
   
   header.banner{

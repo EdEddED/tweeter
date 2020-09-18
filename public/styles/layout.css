@@ -51,6 +51,8 @@ body {
    text-align: center;
  }
 
+ /* code for responsive layout */
+
  @media screen and (min-width: 1024px) {
   main{
     padding: 0;
