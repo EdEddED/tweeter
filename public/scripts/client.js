@@ -21,7 +21,8 @@ $(document).ready(function() {
       url:"/tweets",
       type: "post",
       data: data
-    });
+    })
+    .then(setTimeout(loadTweets(), 500));
   })
 
   const loadTweets = function(){
@@ -37,6 +38,12 @@ $(document).ready(function() {
   loadTweets();
 })
 
+const escape = function(str){
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 const createTweetElement = function(tweet){
   //let tweet = $(`<article class = "tweet"> Hello World! </article>`);
 
@@ -44,12 +51,12 @@ const createTweetElement = function(tweet){
     <article class="tweet">
       <header>
         <span>
-        <img src="${tweet.user.avatars}">
-        <p>${tweet.user.name}</p>
+        <img src="${escape(tweet.user.avatars)}">
+        <p>${escape(tweet.user.name)}</p>
         </span>
-        <p class="handle">${tweet.user.handle}</p>
+        <p class="handle">${escape(tweet.user.handle)}</p>
       </header>
-      <p class="bold">${tweet.content.text}</p>
+      <p class="bold">${escape(tweet.content.text)}</p>
       <footer>
         <p class="bold">${"10 days ago"}</p>
         <span>
@@ -65,6 +72,6 @@ const createTweetElement = function(tweet){
 const renderTweets = function(tweets){
   // console.log("renderTweets called...");
   for (tweet of tweets){
-    $('#all-tweets').append(createTweetElement(tweet));
+    $('#all-tweets').prepend(createTweetElement(tweet));
   }
 }
